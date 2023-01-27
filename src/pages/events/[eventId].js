@@ -7,13 +7,19 @@ import {
   EventSummary,
 } from "../../components/EventDetail/index";
 import { getEventById } from "../../../dummy-data";
+import ErrorAlert from "@/components/Ui/error-alert";
 
 function EventDetailPage() {
   const router = useRouter();
 
   const eventId = router.query.eventId;
   const event = getEventById(eventId);
-  if (!event) return <p>Page Not Found</p>;
+  if (!event)
+    return (
+      <ErrorAlert>
+        <p>Page Not Found</p>
+      </ErrorAlert>
+    );
 
   return (
     <Fragment>
