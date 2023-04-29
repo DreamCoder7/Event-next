@@ -12,10 +12,7 @@ function NewsletterRegistration() {
     // fetch user input (state or refs)
     const enteredEmail = inputEmailRef.current.value;
 
-    const reqBody = {
-      id: new Date().toISOString(),
-      email: enteredEmail,
-    };
+    const emailData = { email: enteredEmail };
 
     // optional: validate input
     if (
@@ -27,16 +24,13 @@ function NewsletterRegistration() {
     }
 
     // send valid data to API
-    fetch(
-      "https://nextjs-course-ca1df-default-rtdb.firebaseio.com/users.json",
-      {
-        method: "POST",
-        body: JSON.stringify(reqBody),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch("/api/newsLetter", {
+      method: "POST",
+      body: JSON.stringify(emailData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -5,8 +5,6 @@ import EventList from "@/components/EventList/event-list";
 import NewsletterRegistration from "@/components/input/newsletter-registration";
 
 function HomePage(props) {
-  console.log(props.events);
-
   return (
     <div>
       <Head>
